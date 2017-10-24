@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background1"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    >
+
+ <FrameLayout 	
+     			android:layout_width="fill_parent"
+        		android:layout_height="0dip"
+        		android:layout_weight="0.70"
+        		>
+     <dk.org.macallan.kidznumbers.views.GameView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"    
+         />
+     <FrameLayout android:id="@+id/container"
+     			  android:layout_width="fill_parent"
+        	 	  android:layout_height="fill_parent"> 
+	     <!--org.ata.kidz.appz.views.SmileyView
+	        android:id="@+id/imageView2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	         android:visibility="gone"
+	        /-->
+	     <ImageView
+	        android:id="@+id/imageView2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:src="@drawable/smiley"
+	        android:visibility="gone"
+	        android:contentDescription="bla"
+	        />
+
+	     <ImageView
+	        android:id="@+id/imageView3"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:src="@drawable/one"
+	        android:visibility="gone"
+	        android:contentDescription="bla"
+	        />
+
+        </FrameLayout>
+</FrameLayout>   
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:stretchColumns="*" >
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/keypad_1"
+                android:text="1" >
+            </Button>
+
+            <Button
+                android:id="@+id/keypad_2"
+                android:text="2" >
+            </Button>
+
+            <Button
+                android:id="@+id/keypad_3"
+                android:text="3" >
+            </Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/keypad_4"
+                android:text="4" >
+            </Button>
+
+            <Button
+                android:id="@+id/keypad_5"
+                android:text="5" >
+            </Button>
+
+            <Button
+                android:id="@+id/keypad_6"
+                android:text="6" >
+            </Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/keypad_7"
+                android:text="7" >
+            </Button>
+
+            <Button
+                android:id="@+id/keypad_8"
+                android:text="8" >
+            </Button>
+
+            <Button
+                android:id="@+id/keypad_9"
+                android:text="9" >
+            </Button>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
