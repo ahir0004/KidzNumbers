@@ -6,16 +6,22 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import dk.org.macallan.kidznumbers.utils.Rotate3dAnimation;
 import dk.org.macallan.kidznumbers.views.GameView;
 
 public class KidzNumberzActivity extends Activity {
-	
+
+	private static final float ROTATE_FROM = 0.0f;
+	private static final float ROTATE_TO = -10.0f * 360.0f;// 3.141592654f * 32.0f;
 	private View keys[] = new View[9];
 	private int numberImage[]=
 	{		 R.drawable.one,
@@ -53,9 +59,6 @@ public class KidzNumberzActivity extends Activity {
 	};
 	private GameView gameView;
 	private ImageView smileyView;
-	private static final float ROTATE_FROM = 0.0f;
-    private static final float ROTATE_TO = -10.0f * 360.0f;// 3.141592654f * 32.0f;
-    
     private ImageView secondPic;
     private ViewGroup mContainer;
     private ImageView mImageView;
@@ -65,19 +68,24 @@ public class KidzNumberzActivity extends Activity {
 	private int selectedKey;
 	private MediaPlayer player;
 	private int[] sentence;
-	
-	
-	
-    /** Called when the activity is first created. */
-    @Override
+	private AdView mAdView;
+
+
+	/**
+	 * Called when the activity is first created.
+	 */
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-        
-        
-        
-        findGameView();
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+		setContentView(R.layout.main);
+
+		mAdView = (AdView) findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder().build();
+		mAdView.loadAd(adRequest);
+
+		findGameView();
         findViews();
 		setListeners();
     }
@@ -86,10 +94,10 @@ public class KidzNumberzActivity extends Activity {
     	
     	gameView=(GameView)findViewById(R.id.imageView1);
     	smileyView = (ImageView)findViewById(R.id.imageView2);
-    	smileyView.setAlpha(150);
-    	secondPic = (ImageView)findViewById(R.id.imageView3);
-    	secondPic.setAlpha(225);
-    	mContainer = (ViewGroup) findViewById(R.id.container);
+		smileyView.setImageAlpha(150);
+		secondPic = (ImageView)findViewById(R.id.imageView3);
+		secondPic.setImageAlpha(225);
+		mContainer = (ViewGroup) findViewById(R.id.container);
     	 //smileyView.
     }
     private void findViews() {
