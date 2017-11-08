@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -20,6 +21,8 @@ import dk.org.macallan.kidznumbers.views.GameView;
 
 public class KidzNumberzActivity extends Activity {
 
+	private Handler splashHandler;
+	private Runnable hideSplash;
 	private static final float ROTATE_FROM = 0.0f;
 	private static final float ROTATE_TO = -10.0f * 360.0f;// 3.141592654f * 32.0f;
 	private View keys[] = new View[9];
@@ -88,6 +91,16 @@ public class KidzNumberzActivity extends Activity {
 		findGameView();
         findViews();
 		setListeners();
+		hideSplash = new Runnable() {
+			@Override
+			public void run() {
+				((ImageView)findViewById(R.id.imageViewSplash)).setVisibility(View.GONE);
+				findViewById(R.id.keypad_array).setVisibility(View.VISIBLE);
+				gameView.setLockTouch(false);
+			}
+		};
+		splashHandler = new Handler();
+		splashHandler.postDelayed(hideSplash, 10000);
     }
      
     private void findGameView(){
@@ -153,24 +166,27 @@ public class KidzNumberzActivity extends Activity {
          keys[i].setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                int nof = gameView.setTheKey(t+1);
-              
-               if(nof==t+1){
-            	   	
-       				setSelectedKey(t);
-              	 	//applyRotation(-1, 0,90);
-              	 	int sentence[]={R.raw.rigtigt,numberSounds[t]};
-              	 	initSounds(sentence);
-              	 	
-              	 
-               }
-               
-               else{
-            		smileyView.setVisibility(View.GONE);
-            		secondPic.setVisibility(View.GONE);
-            		int sentence[]={R.raw.naesten_rigtigt};
-            		initSounds(sentence);
-               }
-              
+
+
+					if (nof == t + 1) {
+
+						setSelectedKey(t);
+						//applyRotation(-1, 0,90);
+						int sentence[] = {R.raw.rigtigt, numberSounds[t]};
+						initSounds(sentence);
+
+					} else {
+						if(!gameView.isViewTouchEnabled()) {
+							smileyView.setVisibility(View.GONE);
+							secondPic.setVisibility(View.GONE);
+							int sentence[] = {R.raw.naesten_rigtigt};
+							initSounds(sentence);
+						}
+						else{
+							gameView.loadFruits();
+						}
+					}
+
             }});
       }
 	}

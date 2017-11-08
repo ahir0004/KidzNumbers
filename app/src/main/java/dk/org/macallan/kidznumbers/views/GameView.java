@@ -47,7 +47,7 @@ public class GameView extends View {
         this.setFocusableInTouchMode(true);
         
         fruits=new ArrayList<Bitmap>();
-        lockTouch=false;
+        lockTouch=true;
 	}
 	public int setTheKey(int value){
 		
@@ -61,13 +61,7 @@ public class GameView extends View {
 		
 	}
 	
-	private void loadImages()
-	  {
-		
-		
-	       
-	       
-	  }
+
 	
 	@Override
     protected void onDraw(Canvas canvas) {
@@ -106,20 +100,32 @@ public class GameView extends View {
 	         return super.onTouchEvent(event);
 		else
 			if(!lockTouch){
-				
-				lockTouch=true;
-				generator = new Random();
-				randomIndex = generator.nextInt(7);
-				numberOfFruits=generator.nextInt(9)+1;
-				
-				((KidzNumberzActivity)getContext()).runOnUiThread(new Runnable() {
-					public void run(){
-						((KidzNumberzActivity)getContext()).getSecondPic().setVisibility(GONE);
-						((KidzNumberzActivity)getContext()).soundNumberOfFruits(randomIndex);
-					}
-				});
-				postInvalidate();
+
+				loadFruits();
 			}
 		return true;
+	   }
+
+	public  void loadFruits() {
+
+		lockTouch=true;
+		generator = new Random();
+		randomIndex = generator.nextInt(7);
+		numberOfFruits=generator.nextInt(9)+1;
+
+		((KidzNumberzActivity)getContext()).runOnUiThread(new Runnable() {
+            public void run(){
+                ((KidzNumberzActivity)getContext()).getSecondPic().setVisibility(GONE);
+                ((KidzNumberzActivity)getContext()).soundNumberOfFruits(randomIndex);
+            }
+        });
+		postInvalidate();
+	}
+
+	public void setLockTouch(boolean lock){
+		lockTouch = lock;
+	}
+	public  boolean isViewTouchEnabled(){
+			return !lockTouch;
 	   }
 }
