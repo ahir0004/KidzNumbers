@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "923027514257",
+    "firebase_url": "https://kidznumbers.firebaseio.com",
+    "project_id": "kidznumbers",
+    "storage_bucket": "kidznumbers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923027514257:android:2eda2b3027d19e67",
+        "android_client_info": {
+          "package_name": "dk.org.macallan.kidznumbers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923027514257-24pn9im6h064j60lk38q4bau1s1m902n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dk.org.macallan.kidznumbers",
+            "certificate_hash": "035f1d13b7ede313cd05979fd6cc2f9f7e74b781"
+          }
+        },
+        {
+          "client_id": "923027514257-8ppvaikjvtprc4fpuehkmgajkrbvtvav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dk.org.macallan.kidznumbers",
+            "certificate_hash": "ea3373fda2e5741bdd4f443fd77df5c86cdcb6a7"
+          }
+        },
+        {
+          "client_id": "923027514257-3erau1mchje872qripub5mtdqj1enlj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMP8Ybm5Ujm0wPCinKWTWoWXtqDJDYpX8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923027514257-3erau1mchje872qripub5mtdqj1enlj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
