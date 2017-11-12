@@ -85,7 +85,9 @@ public class KidzNumberzActivity extends Activity {
 		setContentView(R.layout.main);
 
 		mAdView = (AdView) findViewById(R.id.adView);
-		AdRequest adRequest = new AdRequest.Builder().build();
+		AdRequest adRequest = new AdRequest.Builder()
+				.tagForChildDirectedTreatment(true)
+				.build();
 		mAdView.loadAd(adRequest);
 
 		findGameView();
@@ -100,7 +102,7 @@ public class KidzNumberzActivity extends Activity {
 			}
 		};
 		splashHandler = new Handler();
-		splashHandler.postDelayed(hideSplash, 10000);
+		splashHandler.postDelayed(hideSplash, 5000);
     }
      
     private void findGameView(){
