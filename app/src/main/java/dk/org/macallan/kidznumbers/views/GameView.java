@@ -15,8 +15,6 @@ import dk.org.macallan.kidznumbers.KidzNumberzActivity;
 import dk.org.macallan.kidznumbers.R;
 
 public class GameView extends View {
-	
-	
 
 	int deltaX;
 	int deltaY;
@@ -49,6 +47,7 @@ public class GameView extends View {
         fruits=new ArrayList<Bitmap>();
         lockTouch=true;
 	}
+
 	public int setTheKey(int value){
 		
 		theKey=value;
@@ -58,11 +57,9 @@ public class GameView extends View {
 		}
 			
 		return numberOfFruits;
-		
 	}
 	
 
-	
 	@Override
     protected void onDraw(Canvas canvas) {
 		x= getWidth();

@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, KidzNumberzActivity!</string>
     <string name="app_name">Kidz counting game</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-6235072547561939/5848449714</string>
 </resources>

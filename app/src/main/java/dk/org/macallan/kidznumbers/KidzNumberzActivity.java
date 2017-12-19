@@ -1,10 +1,12 @@
 package dk.org.macallan.kidznumbers;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import dk.org.macallan.kidznumbers.utils.Rotate3dAnimation;
 import dk.org.macallan.kidznumbers.views.GameView;
@@ -86,7 +89,6 @@ public class KidzNumberzActivity extends Activity {
 
 		mAdView = (AdView) findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder()
-				.tagForChildDirectedTreatment(true)
 				.build();
 		mAdView.loadAd(adRequest);
 
@@ -181,6 +183,20 @@ public class KidzNumberzActivity extends Activity {
 						if(!gameView.isViewTouchEnabled()) {
 							smileyView.setVisibility(View.GONE);
 							secondPic.setVisibility(View.GONE);
+							((Vibrator) getSystemService(VIBRATOR_SERVICE)).vibrate(300);
+
+							v.setBackground(getResources().getDrawable(R.drawable.rounded_button_red));
+
+							final View keyView = v;
+							Handler handler = new Handler ();
+							handler.postDelayed(new Runnable() {
+								@Override
+								public void run() {
+									//keyView.setBackgroundColor(Color.WHITE);
+									keyView.setBackground(getResources().getDrawable(R.drawable.rounded_button));
+								}
+							},1000);
+
 							int sentence[] = {R.raw.naesten_rigtigt};
 							initSounds(sentence);
 						}
